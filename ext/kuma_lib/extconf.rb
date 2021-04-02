@@ -2,5 +2,5 @@
 
 require "mkmf"
 
-$CXXFLAGS += " -std=c++17 -stdlib=libc++"
+$CXXFLAGS += " -std=c++17"
 create_makefile("kuma_lib/kuma_lib")
