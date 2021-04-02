@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["kumakumarb"]
   spec.email         = ["rinngo0119@gmail.com"]
 
-  spec.summary       = "atcoder library."
+  spec.summary       = "cpp std library and atcoder library."
   # spec.description   = "TODO: Write a longer description or delete this line."
   spec.homepage      = "https://github.com/kumakumarb/kuma_lib.git"
   spec.license       = "MIT"
@@ -33,6 +33,16 @@ Gem::Specification.new do |spec|
     ext/priority_queue/extconf.rb
     ext/kuma_set/extconf.rb
   ]
+
+  spec.files = %w[
+    lib/kuma_lib/kuma_lib.bundle
+    lib/kuma_lib/kuma_set.bundle
+    lib/kuma_lib/priority_queue.bundle
+    lib/kuma_lib/version.rb
+    lib/kuma_lib.rb
+  ]
+
+  spec.add_development_dependency "rspec", "~> 3.0"
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
