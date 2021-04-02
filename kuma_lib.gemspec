@@ -28,7 +28,11 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.extensions    = ["ext/kuma_lib/extconf.rb"]
+  spec.extensions    = %w[
+    ext/kuma_lib/extconf.rb
+    ext/priority_queue/extconf.rb
+    ext/kuma_set/extconf.rb
+  ]
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
