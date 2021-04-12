@@ -1,12 +1,32 @@
 # frozen_string_literal: true
 
-KSet = KumaLib::KumaSet
+KSet = KumaLib::KumaSortedSet
 
 RSpec.describe KSet do
+  it "test first and min" do
+    ks = KSet.new {|val| val}
+    ks.push(1, 2, 1, 3)
+    expect(ks.first).to eq 1
+    expect(ks.min(2)).to eq [1, 2]
+  end
+
+  it "test last and max" do
+    ks = KSet.new {|val| val}
+    ks.push(1, 2, 1, 3)
+    expect(ks.last).to eq 3
+    expect(ks.max(2)).to eq [3, 2]
+  end
+
   it "test_each" do
     ks = KSet.new {|val| val}
     ks.push(1, 2, 1, 3)
-    expect(ks.map(&:itself).sort).to eq [1, 2, 3]
+    expect(ks.map(&:itself)).to eq [1, 2, 3]
+  end
+
+  it "test_reverse_each" do
+    ks = KSet.new {|val| val}
+    ks.push(1, 2, 1, 3)
+    expect(ks.reverse_each.to_a).to eq [3, 2, 1]
   end
 
   it "test_empty_and_size" do

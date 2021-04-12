@@ -32,12 +32,16 @@ Gem::Specification.new do |spec|
     ext/kuma_lib/extconf.rb
     ext/priority_queue/extconf.rb
     ext/kuma_set/extconf.rb
+    ext/kuma_sorted_set/extconf.rb
+    ext/segment_tree/extconf.rb
   ]
 
   spec.files = %w[
     lib/kuma_lib/kuma_lib.bundle
     lib/kuma_lib/kuma_set.bundle
+    lib/kuma_lib/kuma_set.bundle
     lib/kuma_lib/priority_queue.bundle
+    lib/kuma_lib/segment_tree.bundle
     lib/kuma_lib/version.rb
     lib/kuma_lib.rb
   ]
