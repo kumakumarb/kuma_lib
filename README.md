@@ -22,7 +22,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+For include all liblaries, please write `require 'kuma_lib'`.
+If you want to include only 1 library, please write such as `require 'kuma_lib/priority_queue'`.
+
+Please check docs(japaneses only) for more information.
 
 ## Development
 

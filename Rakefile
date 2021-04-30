@@ -24,4 +24,14 @@ Rake::ExtensionTask.new("kuma_set") do |ext|
   ext.lib_dir = "lib/kuma_lib"
 end
 
+Rake::ExtensionTask.new("kuma_sorted_set") do |ext|
+  ext.ext_dir = "ext/kuma_sorted_set"
+  ext.lib_dir = "lib/kuma_lib"
+end
+
+Rake::ExtensionTask.new("segment_tree") do |ext|
+  ext.ext_dir = "ext/segment_tree"
+  ext.lib_dir = "lib/kuma_lib"
+end
+
 task default: %i[clobber compile spec]

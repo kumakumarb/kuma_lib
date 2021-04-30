@@ -1,6 +1,6 @@
 # KumaSet
 
-C++のSetのバインディングです．
+C++のunordered_setのバインディングです．
 評価関数で整数値を返す任意のオブジェクトを格納できます．
 
 ___
@@ -20,28 +20,12 @@ ___
 ___
 
 **first -> Object | nil**
-
-**min -> Object | nil**
 ```ruby
 x = Kumalib::KumaSet.new {|val| val}
 x << 100 << 0
 x.first # => 0
 ```
-評価値最小の要素を返します．
-集合が空の場合は`nil`を返します．
-
-**計算量** `O(1)`
-___
-
-**last -> Object | nil**
-
-**max -> Object | nil**
-```ruby
-x = Kumalib::KumaSet.new {|val| val}
-x << 100 << 0
-x.last # => 100
-```
-評価値最大の要素を返します．
+最後の要素を返します．
 集合が空の場合は`nil`を返します．
 
 **計算量** `O(1)`
@@ -62,9 +46,7 @@ p i # => 100
 ただし次に示すものは再定義しています．
 * `find`
 * `first`
-* `max`
 * `member?`
-* `min`
 
 詳しくは[ルリマ](https://docs.ruby-lang.org/ja/latest/class/Enumerable.html)参照お願いします．
 ___
@@ -118,7 +100,7 @@ x.szie # => 5
 集合に要素を追加します．
 `insert`は既に同じ評価値のオブジェクトがあれば`false`を，ない場合は`true`を返します．
 
-**計算量** 要素1つ追加するのに`O(log n)` (`n`は集合のサイズ)
+**計算量** 要素1つ追加するのに平均`O(1)`，最悪`O(n)`
 ___
 
 **erase(Object) -> bool** (破壊的)
@@ -131,7 +113,7 @@ x.to_a # => [1, 2, 3]
 引数と同じ評価値の要素を削除します．
 削除した場合に`true`を，削除しなかった場合に`false`を返します．
 
-**計算量** `O(log n)` (`n`は集合のサイズ)
+**計算量** 平均`O(1)`，最悪`O(n)`
 ___
 
 **include?(Object) -> bool**
@@ -144,7 +126,7 @@ x.include?(0) # => true
 ```
 引数と同じ評価値のものが集合に含まれているかどうかを返します．
 
-**計算量** `O(log n)` (`n`は集合のサイズ)
+**計算量** 平均`O(1)`，最悪`O(n)`
 ___
 
 **find(Object) -> Object | nil**
@@ -155,28 +137,4 @@ x.find(3) # => 1
 ```
 引数と同じ評価値の要素を返します．ない場合は`nil`を返します．
 
-**計算量** `O(log n)` (`n`は集合のサイズ)
-___
-
-**lower_bound(Object) -> Object | nil**
-```ruby
-x = KumaLib::KumaSet.new {|val| val}
-x.push(*(0..100))
-x.lower_find(44) # => 44
-```
-引数の評価値以上の評価値最小の要素を返します．
-ない場合は`nil`を返します．
-
-**計算量** `O(log n)` (`n`は集合のサイズ)
-___
-
-**upper_bound(Object) -> Object | nil**
-```ruby
-x = KumaLib::KumaSet.new {|val| val}
-x.push(*(0..100))
-x.upper_bound(44) # => 45
-```
-引数の評価値よりも大きい評価値最小の要素を返します．
-ない場合は`nil`を返します．
-
-**計算量** `O(log n)` (`n`は集合のサイズ)
+**計算量** 平均`O(1)`，最悪`O(n)`
