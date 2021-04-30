@@ -79,7 +79,7 @@ struct mf_graph {
         int m = int(pos.size());
         if (i < 0 || m <= i) rb_raise(rb_eArgError, "Graph don't have edge %d.\n", i);
         if (new_cap < 0) rb_raise(rb_eArgError, "Edge capacity must be 0 or more (given %lld).\n", new_cap);
-        if (new_cap < new_flow) rb_raise(rb_eArgError, "Edge flow must be the capacity %lld or less (given %lld).\n", new_cap, new_flow)
+        if (new_cap < new_flow) rb_raise(rb_eArgError, "Edge flow must be the capacity %lld or less (given %lld).\n", new_cap, new_flow);
 
         _edge& _e = g[pos[i].first][pos[i].second];
         _edge& _re = g[_e.to][_e.rev];
