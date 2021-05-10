@@ -3,4 +3,4 @@
 require "mkmf"
 
 $CXXFLAGS += " -std=c++17"
-create_makefile("cpp_map/cpp_map")
+create_makefile("cpp/map/map")

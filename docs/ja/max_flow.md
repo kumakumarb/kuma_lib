@@ -59,11 +59,13 @@ ___
 mfg.min_cut(0) # => example [true, false, true, ...]
 ```
 残余グラフにおいて頂点`start`から各ノードへ移動可能かどうかを返します．
-任意の頂点`x`に対して`x`に移動可能である時のみ`mfg.min_cut(0)[x] = true`，となります．
 
 ## リンク
 
 [ac-library maxflow.hpp](https://github.com/atcoder/ac-library/blob/master/atcoder/maxflow.hpp)
+
 [ac-library maxflow.md](https://github.com/atcoder/ac-library/blob/master/document_ja/maxflow.md)
+
 [ac-library-rb max_flow.rb](https://github.com/universato/ac-library-rb/blob/main/lib/max_flow.rb)
+
 [ac-library-rb max_flow.md](https://github.com/universato/ac-library-rb/blob/main/document_ja/max_flow.md)

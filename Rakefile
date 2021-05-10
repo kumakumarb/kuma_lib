@@ -9,29 +9,18 @@ require "rake/extensiontask"
 
 task build: :compile
 
-Rake::ExtensionTask.new("kuma_lib") do |ext|
-  ext.ext_dir = "ext/kuma_lib"
-  ext.lib_dir = "lib/kuma_lib"
-end
-
-Rake::ExtensionTask.new("priority_queue") do |ext|
-  ext.ext_dir = "ext/priority_queue"
-  ext.lib_dir = "lib/kuma_lib"
-end
-
-Rake::ExtensionTask.new("kuma_set") do |ext|
-  ext.ext_dir = "ext/kuma_set"
-  ext.lib_dir = "lib/kuma_lib"
-end
-
-Rake::ExtensionTask.new("kuma_sorted_set") do |ext|
-  ext.ext_dir = "ext/kuma_sorted_set"
-  ext.lib_dir = "lib/kuma_lib"
-end
-
-Rake::ExtensionTask.new("segment_tree") do |ext|
-  ext.ext_dir = "ext/segment_tree"
-  ext.lib_dir = "lib/kuma_lib"
+%w[
+  kuma_lib
+  priority_queue
+  kuma_set
+  cpp/map
+  segment_tree
+  max_flow
+].each do |str|
+  Rake::ExtensionTask.new(str) do |ext|
+    ext.ext_dir = "ext/" + str
+    ext.lib_dir = "lib/kuma_lib"
+  end
 end
 
 task default: %i[clobber compile spec]

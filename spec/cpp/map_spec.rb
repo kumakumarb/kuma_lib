@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-CppMap = KumaLib::CppMap
+CppMap = KumaLib::Cpp::Map
 
 RSpec.describe CppMap do
   sh = CppMap.new

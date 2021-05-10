@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/kumakumarb/kuma_lib.git"
-  spec.metadata["changelog_uri"] = "https://github.com/kumakumarb/kuma_lib.git"
+  spec.metadata["changelog_uri"] = "https://github.com/kumakumarb/kuma_lib/blob/master/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -28,23 +28,27 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.extensions    = %w[
-    ext/kuma_lib/extconf.rb
-    ext/priority_queue/extconf.rb
-    ext/kuma_set/extconf.rb
-    ext/kuma_sorted_set/extconf.rb
-    ext/segment_tree/extconf.rb
-  ]
+  # spec.extensions    = %w[
+  #   ext/kuma_lib/extconf.rb
+  #   ext/priority_queue/extconf.rb
+  #   ext/kuma_set/extconf.rb
+  #   ext/kuma_sorted_set/extconf.rb
+  #   ext/segment_tree/extconf.rb
+  # ]
 
-  spec.files = %w[
-    lib/kuma_lib/kuma_lib.bundle
-    lib/kuma_lib/kuma_set.bundle
-    lib/kuma_lib/kuma_set.bundle
-    lib/kuma_lib/priority_queue.bundle
-    lib/kuma_lib/segment_tree.bundle
-    lib/kuma_lib/version.rb
-    lib/kuma_lib.rb
-  ]
+  spec.extensions = Dir.glob("ext/**/extconf.rb")
+
+  # spec.files = %w[
+  #   lib/kuma_lib/kuma_lib.bundle
+  #   lib/kuma_lib/kuma_set.bundle
+  #   lib/kuma_lib/kuma_sorted_set.bundle
+  #   lib/kuma_lib/priority_queue.bundle
+  #   lib/kuma_lib/segment_tree.bundle
+  #   lib/kuma_lib/version.rb
+  #   lib/kuma_lib.rb
+  # ]
+
+  spec.files = Dir.glob("lib/**/*")
 
   spec.add_development_dependency "rspec", "~> 3.0"
 

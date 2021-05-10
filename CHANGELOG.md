@@ -10,4 +10,10 @@
 ## [0.2.0] - 2021-04-12
 
 - [add] Sorted Set (c++)
-- [add] Segment Tree (acl)
+- [add] Segment Tree (AtCoder library)
+
+## [0.3.0] - 2021-04
+
+- [add] MaxFlow (AtCoder library)
+- [delete] SortedSet
+- [add] Cpp::Map

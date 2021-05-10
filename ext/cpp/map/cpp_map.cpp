@@ -5,7 +5,8 @@
 #include <functional>
 
 namespace kuma_lib {
-namespace cpp_map {
+namespace cpp {
+namespace map {
     using mymap_t = std::map<long long int, void *>;
 
     struct WrapCppMap {
@@ -264,48 +265,50 @@ namespace cpp_map {
         return itr == sh->begin() ? Qnil : itr2VALUE(--itr);
     }
 
-}; // namespace cpp_map
+}; // namespace map
+}; // namespace cpp
 }; // namespace kuma_lib
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-extern "C" void Init_cpp_map(void) {
+extern "C" void Init_map(void) {
     VALUE rb_mKumaLib = rb_define_module("KumaLib");
-    VALUE rb_cCppMap = rb_define_class_under(rb_mKumaLib, "CppMap", rb_cObject);
-    rb_include_module(rb_cCppMap, rb_mEnumerable);
+    VALUE rb_mCpp = rb_define_module_under(rb_mKumaLib, "Cpp");
+    VALUE rb_cMap = rb_define_class_under(rb_mCpp, "Map", rb_cObject);
+    rb_include_module(rb_cMap, rb_mEnumerable);
 
-    rb_undef_alloc_func(rb_cCppMap);
-    rb_define_alloc_func(rb_cCppMap, kuma_lib::cpp_map::alloc);
+    rb_undef_alloc_func(rb_cMap);
+    rb_define_alloc_func(rb_cMap, kuma_lib::cpp::map::alloc);
 
-    rb_define_method(rb_cCppMap, "initialize", kuma_lib::cpp_map::initialize, -1);
-    rb_define_method(rb_cCppMap, "default=", kuma_lib::cpp_map::set_default, 1);
-    rb_define_method(rb_cCppMap, "default", kuma_lib::cpp_map::get_default, 0);
-    rb_define_method(rb_cCppMap, "first", kuma_lib::cpp_map::first, 0);
-    rb_define_method(rb_cCppMap, "min", kuma_lib::cpp_map::min, -1);
-    rb_define_method(rb_cCppMap, "last", kuma_lib::cpp_map::last, 0);
-    rb_define_method(rb_cCppMap, "max", kuma_lib::cpp_map::max, -1);
-    rb_define_method(rb_cCppMap, "each", kuma_lib::cpp_map::each, 0);
-    rb_define_method(rb_cCppMap, "reverse_each", kuma_lib::cpp_map::reverse_each, 0);
-    rb_define_method(rb_cCppMap, "empty?", kuma_lib::cpp_map::empty, 0);
-    rb_define_method(rb_cCppMap, "size", kuma_lib::cpp_map::size, 0);
-    rb_define_method(rb_cCppMap, "clear", kuma_lib::cpp_map::clear, 0);
-    rb_define_method(rb_cCppMap, "insert", kuma_lib::cpp_map::insert, 2);
-    rb_define_method(rb_cCppMap, "insert!", kuma_lib::cpp_map::insert_or_assign, 2);
-    rb_define_alias(rb_cCppMap, "[]=", "insert!");
-    rb_define_method(rb_cCppMap, "emplace", kuma_lib::cpp_map::emplace, 2);
-    rb_define_method(rb_cCppMap, "erase", kuma_lib::cpp_map::erase, 1);
-    rb_define_method(rb_cCppMap, "merge!", kuma_lib::cpp_map::merge, 1);
-    rb_define_method(rb_cCppMap, "[]", kuma_lib::cpp_map::bracket, 1);
-    rb_define_method(rb_cCppMap, "at", kuma_lib::cpp_map::at, 1);
-    rb_define_method(rb_cCppMap, "find", kuma_lib::cpp_map::find, 1);
-    rb_define_method(rb_cCppMap, "include?", kuma_lib::cpp_map::include, 1);
-    rb_define_alias(rb_cCppMap, "member?", "include?");
-    rb_define_method(rb_cCppMap, "lower_bound", kuma_lib::cpp_map::lower_bound, 1);
-    rb_define_alias(rb_cCppMap, ">=", "lower_bound");
-    rb_define_method(rb_cCppMap, "not_lower_bound", kuma_lib::cpp_map::not_lower_bound, 1);
-    rb_define_alias(rb_cCppMap, "<", "not_lower_bound");
-    rb_define_method(rb_cCppMap, "upper_bound", kuma_lib::cpp_map::upper_bound, 1);
-    rb_define_alias(rb_cCppMap, ">", "upper_bound");
-    rb_define_method(rb_cCppMap, "not_upper_bound", kuma_lib::cpp_map::not_upper_bound, 1);
-    rb_define_alias(rb_cCppMap, "<=", "not_upper_bound");
+    rb_define_method(rb_cMap, "initialize", kuma_lib::cpp::map::initialize, -1);
+    rb_define_method(rb_cMap, "default=", kuma_lib::cpp::map::set_default, 1);
+    rb_define_method(rb_cMap, "default", kuma_lib::cpp::map::get_default, 0);
+    rb_define_method(rb_cMap, "first", kuma_lib::cpp::map::first, 0);
+    rb_define_method(rb_cMap, "min", kuma_lib::cpp::map::min, -1);
+    rb_define_method(rb_cMap, "last", kuma_lib::cpp::map::last, 0);
+    rb_define_method(rb_cMap, "max", kuma_lib::cpp::map::max, -1);
+    rb_define_method(rb_cMap, "each", kuma_lib::cpp::map::each, 0);
+    rb_define_method(rb_cMap, "reverse_each", kuma_lib::cpp::map::reverse_each, 0);
+    rb_define_method(rb_cMap, "empty?", kuma_lib::cpp::map::empty, 0);
+    rb_define_method(rb_cMap, "size", kuma_lib::cpp::map::size, 0);
+    rb_define_method(rb_cMap, "clear", kuma_lib::cpp::map::clear, 0);
+    rb_define_method(rb_cMap, "insert", kuma_lib::cpp::map::insert, 2);
+    rb_define_method(rb_cMap, "insert!", kuma_lib::cpp::map::insert_or_assign, 2);
+    rb_define_alias(rb_cMap, "[]=", "insert!");
+    rb_define_method(rb_cMap, "emplace", kuma_lib::cpp::map::emplace, 2);
+    rb_define_method(rb_cMap, "erase", kuma_lib::cpp::map::erase, 1);
+    rb_define_method(rb_cMap, "merge!", kuma_lib::cpp::map::merge, 1);
+    rb_define_method(rb_cMap, "[]", kuma_lib::cpp::map::bracket, 1);
+    rb_define_method(rb_cMap, "at", kuma_lib::cpp::map::at, 1);
+    rb_define_method(rb_cMap, "find", kuma_lib::cpp::map::find, 1);
+    rb_define_method(rb_cMap, "include?", kuma_lib::cpp::map::include, 1);
+    rb_define_alias(rb_cMap, "member?", "include?");
+    rb_define_method(rb_cMap, "lower_bound", kuma_lib::cpp::map::lower_bound, 1);
+    rb_define_alias(rb_cMap, ">=", "lower_bound");
+    rb_define_method(rb_cMap, "not_lower_bound", kuma_lib::cpp::map::not_lower_bound, 1);
+    rb_define_alias(rb_cMap, "<", "not_lower_bound");
+    rb_define_method(rb_cMap, "upper_bound", kuma_lib::cpp::map::upper_bound, 1);
+    rb_define_alias(rb_cMap, ">", "upper_bound");
+    rb_define_method(rb_cMap, "not_upper_bound", kuma_lib::cpp::map::not_upper_bound, 1);
+    rb_define_alias(rb_cMap, "<=", "not_upper_bound");
 }
